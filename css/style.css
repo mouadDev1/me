@@ -308,7 +308,38 @@
   width: 30px;
 }
 
-/*** Project Portfolio ***/
+/* Project Portfolio **/
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.portfolio-item {
+  flex: 0 0 calc(33.333% - 1rem);
+  min-height: 300px;
+}
+
+.portfolio-item.hidden {
+  display: none;
+}
+
+.portfolio-item.hidden.show {
+  display: flex;
+}
+
+@media (max-width: 991px) {
+  .portfolio-item {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-item {
+    flex: 0 0 100%;
+  }
+}
+
 #portfolio-flters li {
   display: inline-block;
   font-weight: 500;
@@ -326,6 +357,22 @@
 
 .portfolio-img {
   position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-img img {
+  transform: scale(1.05);
 }
 
 .portfolio-btn {
@@ -342,6 +389,7 @@
   padding-bottom: 100px !important;
   opacity: 0;
   transition: 0.5s;
+  flex-wrap: wrap;
 }
 
 .portfolio-item:hover .portfolio-btn {
@@ -354,9 +402,16 @@
   padding-bottom: 30px !important;
 }
 
+.project-text {
+  margin-top: 10px;
+  width: 100%;
+}
+
 .reset-link:hover .fa-link::before {
   content: "\f0c1"; /* Font Awesome reset icon code */
 }
+
+
 
 /*** Team ***/
 .team-item img {
