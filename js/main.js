@@ -184,6 +184,17 @@
     itemSelector: ".portfolio-item",
     layoutMode: "fitRows",
   });
+
+  // Wait for all images to load before finalizing the layout
+  $(window).on("load", function () {
+    portfolioIsotope.isotope("reloadItems").isotope();
+  });
+
+  // Trigger layout on image load
+  $(".portfolio-container").on("load", "img", function () {
+    portfolioIsotope.isotope("reloadItems").isotope();
+  });
+
   $("#portfolio-flters li").on("click", function () {
     $("#portfolio-flters li").removeClass("active");
     $(this).addClass("active");
